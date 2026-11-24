@@ -303,13 +303,6 @@ as in the lab: UR driver, then the pendant program, then the `ur3e_mrc` package,
 **If you press the emergency stop while the computer is in control**, the driver connection breaks.
 Close the driver, release the e-stop (twist the knob until it pops up), release the brakes with the
 arm button, and repeat from step 1. Report any damage to a TA or the lab manager right away.
-
-
-To run your own code instead of the curve tracer, use another pane:
-`ros2 run {your package} {your node}` or `ros2 launch {your package} {your launch file}`.
-
-Laser pointer: `ros2 topic pub --once /ur3e/laser_point std_msgs/msg/Bool "data: true"`
-
 ---
 
 ## How the curve tracer works
