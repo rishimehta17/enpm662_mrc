@@ -259,8 +259,7 @@ as in the lab: UR driver, then the pendant program, then the `ur3e_mrc` package,
    ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur3e robot_ip:=192.168.77.22 kinematics_params_file:=${HOME}/enme480_ws/config/ur3e_mrc.yaml
    ```
 
-   `ur3e_mrc.yaml` is the lab's calibration file for the arm. If it is not in `config/`, ask the lab
-   manager for it. Without it, drop the `kinematics_params_file` argument.
+   `ur3e_mrc.yaml` is the lab's calibration file for the arm. 
 
 2. **On the teaching pendant**, start the program that allows ROS 2 control:
    `Programs → URCaps → External Control → Control_by_MRC_ur3e_pc`, and press play.
