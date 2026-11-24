@@ -248,7 +248,7 @@ as in the lab: UR driver, then the pendant program, then the `ur3e_mrc` package,
 3. **Check the network settings** in `config/ur3e_setup.bash`: `UR_IP` (the robot, `192.168.77.22`
    in the lab) and `YOUR_IP` (your PC). They must match the lab setup. Every pane you open in the
    container reads this file.
-4. **Start the container, build and open tmux**, as in [2.1](#21-start-the-container). Create 4 panes
+4. **Start the container, build your workspace and open tmux**, as in [2.1](#21-start-the-container). Create 4 panes
    to work with the UR3e arm.
 
 ### 3.2 Run (in the tmux panes)
@@ -256,8 +256,7 @@ as in the lab: UR driver, then the pendant program, then the `ur3e_mrc` package,
 1. **Start the UR driver** (pane 1):
 
    ```bash
-   ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur3e robot_ip:=${UR_IP} \
-     kinematics_params_file:=${HOME}/enpm662_ws/config/ur3e_mrc.yaml
+   ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur3e robot_ip:=192.168.77.22 kinematics_params_file:=${HOME}/enme480_ws/config/ur3e_mrc.yaml
    ```
 
    `ur3e_mrc.yaml` is the lab's calibration file for the arm. If it is not in `config/`, ask the lab
