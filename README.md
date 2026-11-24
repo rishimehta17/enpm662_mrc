@@ -95,7 +95,7 @@ Then build. Do this again every time the Dockerfile changes:
 
 ```bash
 cd ~/ENPM662_mrc/docker
-userid=$(id -u) groupid=$(id -g) docker compose -f humble-enpm662_ur3e-compose.yml build
+userid=$(id -u) groupid=$(id -g) docker compose -f humble-enpm662_ur3e-compose.yml 
 ```
 
 On a PC with an NVIDIA GPU, use `humble-enpm662_ur3e-nvidia-compose.yml` instead of
