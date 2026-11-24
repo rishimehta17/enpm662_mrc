@@ -256,7 +256,7 @@ as in the lab: UR driver, then the pendant program, then the `ur3e_mrc` package,
 1. **Start the UR driver** (pane 1):
 
    ```bash
-   ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur3e robot_ip:=192.168.77.22 kinematics_params_file:=${HOME}/enpm662_ws/config/ur3e_mrc.yaml
+   ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur3e robot_ip:=192.168.77.22
    ```
 
    `ur3e_mrc.yaml` is the lab's calibration file for the arm. 
@@ -269,13 +269,8 @@ as in the lab: UR driver, then the pendant program, then the `ur3e_mrc` package,
    **After this, don't use the pendant's touchpad controls** (Move tab, free drive). If you do,
    stop the driver and start again from step 1.
 
-3. **Start the MRC UR3e package** (pane 2):
 
-   ```bash
-   ros2 launch ur3e_mrc ur3e_enpm662.launch
-   ```
-
-4. **Check that the trajectory controller is active** (pane 3):
+3. **Check that the trajectory controller is active** (pane 3):
 
    ```bash
    ros2 control list_controllers
@@ -284,18 +279,8 @@ as in the lab: UR driver, then the pendant program, then the `ur3e_mrc` package,
    `scaled_joint_trajectory_controller` must be `active`. This is the controller `trace_curve`
    sends the trajectory to, in simulation and on the robot.
 
-5. **Move the arm to HOME** with the lab's joint command (pane 3). HOME in joint angles is
-   `[0, -1.57, 1.57, -1.57, -1.57, 0]` rad. Use low `v` and `a` so you have time to react, and wait
-   until the arm stops:
 
-   ```bash
-   ros2 topic pub --once /ur3e/command ur3e_mrc_msgs/msg/CommandUR3e "destination: [0, -1.57, 1.57, -1.57, -1.57, 0]
-   v: 0.3
-   a: 0.3
-   io_0: false"
-   ```
-
-6. **Watch the tool path** (pane 4) and **draw** (pane 3):
+4. **Watch the tool path** (pane 4) and **draw** (pane 3):
 
    ```bash
    # Pane 4
@@ -308,7 +293,7 @@ as in the lab: UR driver, then the pendant program, then the `ur3e_mrc` package,
    Draw another curve the same way as in simulation, for example
    `ros2 run ur3e_curve_tracer trace_curve --ros-args -p x:="cos(t)" -p y:="sin(t)"`.
 
-7. **Shut down:**
+5. **Shut down:**
    1. `Ctrl+C` in each pane, and stop the program on the pendant.
    2. On the pendant, open the **Move** screen and tap **Home** (bottom middle). Hold **Move to
       new position** until the robot is fully in position and the screen says the move is done.
@@ -319,25 +304,6 @@ as in the lab: UR driver, then the pendant program, then the `ur3e_mrc` package,
 Close the driver, release the e-stop (twist the knob until it pops up), release the brakes with the
 arm button, and repeat from step 1. Report any damage to a TA or the lab manager right away.
 
-### 3.3 More lab commands (optional)
-
-Move the arm to any joint angles (radians). Start with low `v` and `a`:
-
-```bash
-ros2 topic pub --once /ur3e/command ur3e_mrc_msgs/msg/CommandUR3e "destination: [tht1, tht2, tht3, tht4, tht5, tht6]
-v: 0.3
-a: 0.3
-io_0: false"
-```
-
-Test angles (rad):
-
-```
-[0, -0.758, 0, 0.758,-1.571, 1.048]
-[-0.524,-1.048, 1.396,-0.175,-1.571,-0.524]
-[0.524,-1.222, 1.396,-0.175, -1.571,0.175]
-[-0.524,-1.048, 1.048,-0.175,-1.571,-0.524]
-```
 
 To run your own code instead of the curve tracer, use another pane:
 `ros2 run {your package} {your node}` or `ros2 launch {your package} {your launch file}`.
