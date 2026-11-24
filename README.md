@@ -190,21 +190,8 @@ ros2 run ur3e_curve_tracer trace_curve --ros-args -p use_sim_time:=true -p x:="s
 
 Restart the live plot before each new curve to get a clean window.
 
-### 2.4 Other simulation tools
 
-- `ros2 launch enpm662_gazebo enpm662_ur3e_empty.launch.py` starts Gazebo with an empty world
-  (no table objects).
-- To move the arm by joint angles instead, start the simulation, then in another pane:
-
-  ```bash
-  ros2 launch ur3e_mrc_sim ur3e_enpm662.launch.py
-  ros2 topic pub --once /ur3e/command ur3e_mrc_msgs/msg/CommandUR3e "destination: [0, -1.57, -1.57, 0, 0, 0]
-  v: 1.0
-  a: 1.0
-  io_0: false"
-  ```
-
-### 2.5 Stop
+### 2.4 Stop
 
 `Ctrl+C` in each pane, then `exit` in each pane (and once more to leave the container). The
 container is deleted when you leave it.
