@@ -256,7 +256,7 @@ as in the lab: UR driver, then the pendant program, then the `ur3e_mrc` package,
 1. **Start the UR driver** (pane 1):
 
    ```bash
-   ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur3e robot_ip:=192.168.77.22 kinematics_params_file:=${HOME}/enme480_ws/config/ur3e_mrc.yaml
+   ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur3e robot_ip:=192.168.77.22 kinematics_params_file:=${HOME}/enpm662_ws/config/ur3e_mrc.yaml
    ```
 
    `ur3e_mrc.yaml` is the lab's calibration file for the arm. 
